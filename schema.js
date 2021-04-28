@@ -6,12 +6,12 @@ const typeDefs = gql`
         titulo: String
         tecnologia: String
     }
-    type Tecnologia {
-        tecnologia: String 
+    input CursoInput {
+        tecnologia: String
     }
     type Query {
         obtenerCursos: [Curso]
-        obtenerTecnologia: [Tecnologia]
+        obtenerCursosPorTitulo(input: CursoInput!): [Curso]
     }
 
 `;
