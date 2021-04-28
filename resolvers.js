@@ -9,6 +9,8 @@ const resolvers = {
         //                       ctx <- constest se comparte entre los resolvers por ejemplo una autenticacion
         //                       info <- contiene informacion sobre la consulta actual                             
         obtenerCursosPorTitulo: (_,{input},ctx, info ) => {
+
+                console.log("usuario autenticado",ctx);
                 const resultado = cursos.filter(curso => curso.tecnologia === input.tecnologia);
 
                 return resultado;
