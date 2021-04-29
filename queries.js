@@ -43,3 +43,19 @@ mutaton nuevoUsuario($input : UsuarioInput){
         "password": "123456"
     }
 }
+
+//auenticacion 
+
+mutation autenticarUsuario($input: AutenticarInput){
+    autenticarUsuario(input: $input){
+        token
+    }
+}
+
+--query vairables
+{
+    "input": {
+        "email": "jona@gmail.com",
+        "password": "123456"
+    }
+}
