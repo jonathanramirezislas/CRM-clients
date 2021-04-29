@@ -33,3 +33,17 @@ mutation autenticarUsuario($input: AutenticarInput){
         "password": "123456"
     }
 }
+
+
+//obtnerUsuario
+query obtenerUsuario($input: String){
+    obtenerUsuario(token: $token) {
+        id
+    }
+}
+
+--query vairables
+
+{
+    "token":"dkdhfkkdsflds....."
+}
