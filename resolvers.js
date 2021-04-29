@@ -1,4 +1,3 @@
-const cursos = require('./db/data');
 const Usuario = require('./models/Usuarios');
 const bcryptjs = require('bcryptjs');
 const jwt =  require('jsonwebtoken');
@@ -14,19 +13,11 @@ const crearToken = (usuario, secreta, expiresIn) =>{
 //Resolvers
 const resolvers = {
     Query:{
-        obtenerCursos: () => cursos,
-        //                      _, <- es el que tiene el resultado de un resolver padre (consultas anidados)
-        //                       input <-           
-        //                       ctx <- constest se comparte entre los resolvers por ejemplo una autenticacion
-        //                       info <- contiene informacion sobre la consulta actual                             
-        obtenerCursosPorTitulo: (_,{input},ctx, info ) => {
+        obtenerUsuario: async (_,{ token }) => {
+            const usuarioId = await jwt.verify(token, process.env.SECRETA)
 
-                console.log("usuario autenticado",ctx);
-                const resultado = cursos.filter(curso => curso.tecnologia === input.tecnologia);
-
-                return resultado;
-        },
-
+            return usuarioId;
+        }
     },
     Mutation: {
         nuevoUsuario: async (_,{ input }) => {
