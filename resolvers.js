@@ -18,6 +18,15 @@ const resolvers = {
             const usuarioId = await jwt.verify(token, process.env.SECRETA)
 
             return usuarioId;
+        },
+        obtenerProductos: async () => {
+            try {
+                const productos = await  Producto.find({});
+
+                return productos;
+            } catch (error) {
+                console.log(error)
+            }
         }
     },
     Mutation: {
@@ -58,6 +67,16 @@ const resolvers = {
                 token: crearToken(existeUsuario, process.env.SECRETA, '24h' )
             }
 
+        },
+        nuevoProducto: async (_, { input }) => {
+            try {
+                const producto = new Producto(input);
+                const resultado= await producto.save();
+
+                const resultado;
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
 

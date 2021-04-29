@@ -46,7 +46,11 @@ const typeDefs = gql`
 
    ########## QUERY
     type Query {
+        # Usuarios
         obtenerUsuario(token: String!) : Usuario
+        
+        # Productos
+        obtenerProductos(): [Producto]
     }
 
     ######### MUTATION    

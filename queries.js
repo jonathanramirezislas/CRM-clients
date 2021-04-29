@@ -36,7 +36,7 @@ mutation autenticarUsuario($input: AutenticarInput){
 
 
 //obtnerUsuario
-query obtenerUsuario($input: String){
+query obtenerUsuario($input: String!){
     obtenerUsuario(token: $token) {
         id
     }
@@ -46,4 +46,51 @@ query obtenerUsuario($input: String){
 
 {
     "token":"dkdhfkkdsflds....."
+}
+
+//agregar producto
+mutation nuevoProducto($input: ProductoInput!){
+    nuevoProducto(input: $input){
+        id
+        nombre
+        existencia
+        precio 
+        creado
+    }
+}
+
+--query vairables
+
+{
+    "input": {
+        "nombre": "Monitor 45 pulgadas"
+        "precio ": 10000,
+        "existencia": 30
+    }
+}
+
+
+//obtener productos
+query obtenerProductos {
+    obtenerProductos{
+        id
+        nombre
+        precio
+        existencia
+        creado
+    }
+}
+
+//obtener producto
+query obtenerProducto($id: ID!) {
+    obtenerProducto(id: $id){
+        id
+        nombre
+        precio
+        existencia
+    }
+}
+--query vairables
+{
+    "id": "ddd554ds4f54d5dff"
 }
