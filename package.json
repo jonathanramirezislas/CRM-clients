@@ -19,6 +19,7 @@
   "homepage": "https://github.com/jonathanramirezislas/CRM-clients#readme",
   "dependencies": {
     "apollo-server": "^2.23.0",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "graphql": "^15.5.0",
     "mongoose": "^5.12.6"

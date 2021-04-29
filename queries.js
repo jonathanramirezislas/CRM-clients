@@ -1,3 +1,4 @@
+
 query {
     obtenerCursos {
         titulo
@@ -21,5 +22,24 @@ query obtenerCursosPorTitulo($input: CursoInput!){
 {
     "input": {
         "tecnologia":"React"
+    }
+}
+
+//Mutaitons
+mutaton nuevoUsuario($input : UsuarioInput){
+    nuevoUsuario(input: $input){
+        id 
+        nombre
+        apellido
+        email
+    }
+}
+---query vairables
+{
+    "input": {
+        "nombre": "Jonathan",
+        "apellido": "Ramirez",
+        "email": "jona@gmail.com",
+        "password": "123456"
     }
 }

@@ -1,4 +1,6 @@
-const cursos = require('./db/data')
+const cursos = require('./db/data');
+const Usuario = require('./models/Usuarios');
+const bcryptjs = require('bcryptjs');
 
 //Resolvers
 const resolvers = {
@@ -16,6 +18,28 @@ const resolvers = {
                 return resultado;
         },
 
+    },
+    Mutation: {
+        nuevoUsuario: (_,{ input }) => {
+            const {email, password} = input;
+
+            const existeUsuario = await Usuario.findOne({email});
+            if (existeUsuario){
+                throw new Error('Ya existe un usuario con este email ',email)
+            }
+
+            const salt = await bcryptjs.getSalt(10);
+            input.password = await bcryptjs.hash(password, salt);
+
+            try {
+                const usuario = new Usuario(input);
+                usuario.save();
+                return usuario;
+            } catch (error) {
+                console.log(error)
+            }
+
+        }
     }
 
 }
