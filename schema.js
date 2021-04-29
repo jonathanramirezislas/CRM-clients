@@ -12,6 +12,14 @@ const typeDefs = gql`
         creado: String
     }
 
+    type Producto {
+        id: ID
+        nombre: String
+        existencia: Int
+        precio: Float
+        creado: String
+    }
+
     type Token {
         token: String 
     }
