@@ -94,3 +94,38 @@ query obtenerProducto($id: ID!) {
 {
     "id": "ddd554ds4f54d5dff"
 }
+
+
+//actualizar producto
+mutation actualizarProducto($id: ID!, $input: ProductoInput){
+    actualizarProducto(id:$id, input:$input){
+        id
+        nombre
+        existencia
+        precio
+    }
+}
+--query variables
+{
+    "id": "ddd554ds4f54d5dff"
+    "input": {
+        "nombre": "Monitor 45 pulgadas"
+        "precio ": 15000, //before 10 000
+        "existencia": 20 //before 30
+    }
+}
+
+
+//eliminar producto
+mutation eliminarProducto($id: ID!){
+    eliminarProducto(id:$id){
+    
+    }
+}
+--query variables
+{
+    "id": "ddd554ds4f54d5dff"
+    
+}
+
+
