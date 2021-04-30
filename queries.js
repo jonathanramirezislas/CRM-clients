@@ -128,4 +128,22 @@ mutation eliminarProducto($id: ID!){
     
 }
 
+//nUEVO Cliente
+mutation nuevoCliente($input: ClienteInput){
+    nuevoCliente(input:$input){
+        nombre
+        apellido
+    }
+}
+--query variables
+{
+    "input": {
+        "nombre": "Jonathan",
+        "apellido": "Ramirez",
+        "empresa": "jonascompany",
+        "email": "jona@gmail.com",
+        "telefono":"54d5fd5s"
+    }
+    
+}
 
