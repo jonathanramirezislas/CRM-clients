@@ -406,3 +406,19 @@ query mejoresVendedores{
         total
     }
 }
+
+//Buscar producto
+query buscarProducto($texto: String!){
+    buscarProducto(texto:$texto){
+        nombre
+        existencia 
+        precio
+    }
+}
+
+--query variables
+{
+    "texto": "Monitor"
+   
+    
+}
