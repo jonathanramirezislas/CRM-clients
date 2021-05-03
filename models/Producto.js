@@ -11,7 +11,7 @@ const ProductosSchema = mongoose.Schema({
         required: true,
         trim:true
     },
-    existencia:{
+    precio:{
         type: Number,
         required: true,
         trim:true

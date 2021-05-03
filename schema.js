@@ -41,7 +41,7 @@ const typeDefs = gql`
         password: String!
     }
 
-    input PorductoInput{
+    input ProductoInput{
         nombre: String!
         existencia: Int
         precio: Float!
