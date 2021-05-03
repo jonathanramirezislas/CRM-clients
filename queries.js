@@ -223,3 +223,40 @@ mutation eliminarCliente($id: ID!){
 {
     "authorization":"fjksdjkdkftoken...."
 }
+
+//NuevoPedido 
+
+mutation nuevoPedido($input: PedidoInput){
+    nuevoPedido(input:$input){
+        id
+        cliente 
+        vendedor 
+        pedido {
+            id
+            cantidad
+        }
+        total 
+        estado 
+         
+    }
+}
+--query variables
+{
+    "input": {
+        "pedido":[
+            {
+                "id" : "edmflmdsklf_id_producto",
+                "cantidad": 20
+            }
+        ],
+        "total":300,
+        "cliente": "sdfnslkdnflknsldklkf_id cliente",
+        "estado": "PENDIENTE"
+    }
+    
+}
+--http Headers
+{
+    "authorization":"fjksdjkdkftoken...."
+}
+

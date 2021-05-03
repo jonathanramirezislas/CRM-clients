@@ -1,6 +1,7 @@
 const Usuario = require('./models/Usuarios');
 const Producto = require('./models/Producto');
 const Cliente = require('./models/Cliente');
+const Pedido = require('./models/Pedido');
 const bcryptjs = require('bcryptjs');
 const jwt =  require('jsonwebtoken');
 require('dotenv').config({ path: 'variables.env' });
@@ -195,6 +196,41 @@ const resolvers = {
             return "Producto eliminado";
 
         }, 
+        nuevoPedido :  async(_, { input}, ctx)=>{
+           
+            const { cliente } = input
+
+            let clienteExiste = await Cliente.findById(cliente)
+            
+            if(!clienteExiste){
+                throw new Error("Cliente no existe");
+            }
+
+            if(clienteExiste.vendedor.toString() !== ctx.usuario.id){
+                throw new Error("No tienes las credenciales");
+            }
+
+            for await (const articulo of input.pedido){
+                const [id] = articulo;
+                const producto = await Producto.findById(id);
+                
+                if(articulo.cantidad > producto.existencia) {
+                    throw new Error(`El producto: ${producto.nombre} excede la cantidad disponible`);
+                }else{
+                    producto.existencia = producto.existencia - articulo.cantidad;
+                    await producto.save();
+                }
+            }
+
+            const nuevoPedido = new Pedido(input);
+            
+            nuevoPedido.vendedor = ctx.usuario.id;
+
+            const resultado = await nuevoPedido.save();
+
+            return resultado;
+
+        },
     }
 
 }
