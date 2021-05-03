@@ -42,6 +42,23 @@ const resolvers = {
                 console.log(error)
             }
         },
+        obtenerCliente: async (_, { id }, ctx) => {
+            try {
+                const cliente = await  Cliente.findById(id);
+
+                if(!cliente){
+                    throw new Error('cliente no encontrado');
+                }
+
+                if(cliente.vendedor.toString() !== ctx.usuario.id){
+                    throw new Error('No tienes las credenciales');
+                }
+
+                return cliente;
+            } catch (error) {
+                console.log(error)
+            }
+        },
         obtenerClientes: async () => {
             try {
                 const clientes = await  Cliente.find({});
@@ -62,6 +79,7 @@ const resolvers = {
                 console.log(error)
             }
         },
+        
     },
     Mutation: {
         nuevoUsuario: async (_,{ input }) => {
@@ -127,7 +145,7 @@ const resolvers = {
             if(!producto){
                 throw new Error('Producto no encontrado');
             }
-            await Producto.findOneAndDelete({_id:id}, input, {new:true});
+            await Producto.findOneAndDelete({_id:id});
             return "Producto eliminado";
 
         },
@@ -149,9 +167,34 @@ const resolvers = {
             } catch (error) {
                 console.log(`Sucedio un error ${error}`)                
             }
-
-
         },
+        actualizarCliente: async (_, { id, input}, ctx )=> {
+
+            let cliente = await Cliente.findById(id);
+           
+            if(!cliente){
+                throw new Error('cliente no encontrado');
+            }
+            if(cliente.vendedor.toString() !== ctx.usuario.id){
+                throw new Error('No tienes las credenciales');
+            }
+
+            cliente = await Cliente.findOneAndUpdate({_id:id}, input, {new:true});
+            return cliente;
+        },
+        eliminarCliente: async(_, { id}, ctx)=>{
+            let cliente = await Cliente.findById(id);
+            if(!cliente){
+                throw new Error('cliente no encontrado');
+            }
+            if(cliente.vendedor.toString() !== ctx.usuario.id){
+                throw new Error('No tienes las credenciales');
+            }
+
+            await Cliente.findOneAndDelete({_id:id});
+            return "Producto eliminado";
+
+        }, 
     }
 
 }

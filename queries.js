@@ -162,3 +162,64 @@ query obtenerClientesVendedor($input: ClienteInput){
         empresaemail
     }
 }
+
+//obtener cliente
+query obtenerCliente($id: ID!){
+    obtenerCliente(id:$id){
+        nombre
+        email
+
+    }
+}
+--query variables
+{
+    "id": "sdfsdafasdf_idcliente"
+    
+}
+--http Headers
+{
+    "authorization":"fjksdjkdkftoken...."
+}
+
+//actualizar cliente
+mutation actualizarCliente($id: ID!, $input: ClienteInput){
+    actualizarCliente(id:$id, input:$input){
+        nombre
+        apellido
+        empresa
+        email
+        telefono
+    }
+}
+--query variables
+{
+    "id": "ddd554ds4f54d5dff_cliente_a_actualizar"
+    "input": {
+        "nombre": "NuevoNombre",
+        "apellido": "Ramirez",
+        "empresa": "jonascompany",
+        "email": "jona@gmail.com",
+        "telefono":"54d5fd5s"
+    }
+}
+--http Headers
+{
+    "authorization":"fjksdjkdkftoken...."
+}
+
+//Eliminar Cliente
+
+mutation eliminarCliente($id: ID!){
+    eliminarCliente(id:$id){
+
+    }
+}
+--query variables
+{
+    "id": "ddd554ds4f54d5dff_cliente_a_eliminar"
+    
+}
+--http Headers
+{
+    "authorization":"fjksdjkdkftoken...."
+}

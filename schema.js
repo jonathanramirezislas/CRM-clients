@@ -72,8 +72,10 @@ const typeDefs = gql`
         obtenerProductos(): [Producto]
 
         #clientes
+        obtenerCliente(id: ID!): Cliente
         obtenerClientes: [Cliente]
         obtenerClientesVendedor: [Cliente]
+        actualizarCliente(id: ID!, ClienteInput): Cliente
     }
 
     ######### MUTATION    
@@ -89,6 +91,8 @@ const typeDefs = gql`
 
         #Clientes
         nuevoCliente(input: ClienteInput!): Cliente
+        eliminarCliente(id: ID!): String
+
     }
 `;
 
