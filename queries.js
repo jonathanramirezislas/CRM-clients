@@ -19,7 +19,6 @@ mutaton nuevoUsuario($input : UsuarioInput){
 }
 
 //auenticacion 
-
 mutation autenticarUsuario($input: AutenticarInput){
     autenticarUsuario(input: $input){
         token
@@ -41,9 +40,7 @@ query obtenerUsuario($input: String!){
         id
     }
 }
-
 --query vairables
-
 {
     "token":"dkdhfkkdsflds....."
 }
@@ -58,9 +55,7 @@ mutation nuevoProducto($input: ProductoInput!){
         creado
     }
 }
-
 --query vairables
-
 {
     "input": {
         "nombre": "Monitor 45 pulgadas"
@@ -80,7 +75,6 @@ query obtenerProductos {
         creado
     }
 }
-
 //obtener producto
 query obtenerProducto($id: ID!) {
     obtenerProducto(id: $id){
@@ -150,4 +144,21 @@ mutation nuevoCliente($input: ClienteInput){
 {
     "authorization":"fjksdjkdkftoken...."
 }
+//obtener clientes
 
+query obtenerClientes {
+    obtenerClientes{
+        nombre
+        empresa
+        email
+    }
+}
+
+//obtener clientes de un usuario en especifico
+query obtenerClientesVendedor($input: ClienteInput){
+    obtenerClientesVendedor(input:$input){
+        nombre
+        apellido
+        empresaemail
+    }
+}

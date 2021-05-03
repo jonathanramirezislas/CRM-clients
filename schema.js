@@ -70,6 +70,10 @@ const typeDefs = gql`
         
         # Productos
         obtenerProductos(): [Producto]
+
+        #clientes
+        obtenerClientes: [Cliente]
+        obtenerClientesVendedor: [Cliente]
     }
 
     ######### MUTATION    
