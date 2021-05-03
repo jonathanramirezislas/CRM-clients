@@ -345,3 +345,42 @@ mutation actualizarPedido($input: PedidoInput){
 {
     "authorization":"fjksdjkdkftoken...."
 }
+
+
+///eliminar pedido
+mutation eliminarPedido($id: ID!){
+    eliminarPedido(id: $id){
+
+    }
+}
+--query variables
+{
+    "id": "sdkfnlksndnflsdlk id_pedido"
+   
+    
+}
+--http Headers
+{
+    "authorization":"fjksdjkdkftoken...."
+}
+
+
+//obtener pedidos estado
+query obtenerPedidosEstado($estado: String!){
+    obtenerPedidosEstado(estado:$estado){
+        id
+        estado
+        cliente
+    }
+}
+
+--query variables
+{
+    "estado": "PENDIENTE"
+   
+    
+}
+--http Headers
+{
+    "authorization":"fjksdjkdkftoken...."
+}
