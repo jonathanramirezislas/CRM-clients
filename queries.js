@@ -146,4 +146,8 @@ mutation nuevoCliente($input: ClienteInput){
     }
     
 }
+--http Headers
+{
+    "authorization":"fjksdjkdkftoken...."
+}
 

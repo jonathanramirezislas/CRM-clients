@@ -111,7 +111,7 @@ const resolvers = {
             return "Producto eliminado";
 
         },
-        nuevoCliente :  async(_, { input})=>{
+        nuevoCliente :  async(_, { input}, ctx)=>{
             const {email} = input;
             const cliente = await Cliente.findOne({email});
             if(!cliente){
@@ -119,12 +119,12 @@ const resolvers = {
             }
 
             const nuevoCliente = new Cliente(input);
-            nuevoCliente.vendedor="4df54fds4f4ejemplo";
+            nuevoCliente.vendedor = ctx.usuario.id;
 
             try {
                 const resultado = await nuevoCliente.save()
     
-                return resultado+;
+                return resultado;
                 
             } catch (error) {
                 console.log(`Sucedio un error ${error}`)                
