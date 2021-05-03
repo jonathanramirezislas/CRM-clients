@@ -260,3 +260,88 @@ mutation nuevoPedido($input: PedidoInput){
     "authorization":"fjksdjkdkftoken...."
 }
 
+//obtener Pedidos
+query obtenerPedidos{
+    obtenerPedidos{
+        id 
+        pedido{
+            id
+            cantidad
+        }
+        cliente 
+        vendedor 
+        total 
+        estado 
+    }
+}
+
+//obtener Pedidos por Vendedor el cual esta autenticado
+query obtenerPedidosVendedor{
+    obtenerPedidosVendedor{
+        id 
+        pedido{
+            id
+            cantidad
+        }
+        cliente 
+        vendedor 
+        total 
+        estado 
+    }
+}
+
+//obtener Pedidos por Vendedor el cual esta autenticado
+obtenerPedido{
+    obtenerPedido{
+        id 
+        pedido{
+            id
+            cantidad
+        }
+        cliente 
+        vendedor 
+        total 
+        estado 
+    }
+}
+
+--query variables
+{
+    "id": "lskdngmlkfdlkg_ id pedido"
+    
+}
+--http Headers
+{
+    "authorization":"fjksdjkdkftoken...."
+}
+
+
+//actulizar pedido
+mutation actualizarPedido($input: PedidoInput){
+    actualizarPedido(input:$input){
+        id
+       
+        estado 
+         
+    }
+}
+--query variables
+{
+    "id": "sdkfnlksndnflsdlk id_pedido"
+    "input": {
+        "estado": "COMPLETADO",
+        "cleinte":"ksdnflkndskflk_ id del cliente",
+        "pedido":[
+            {
+                "id" : "edmflmdsklf_id_producto",
+                "cantidad": 20
+            }
+        ],
+
+    }
+    
+}
+--http Headers
+{
+    "authorization":"fjksdjkdkftoken...."
+}

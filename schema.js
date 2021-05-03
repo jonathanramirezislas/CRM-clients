@@ -70,8 +70,8 @@ const typeDefs = gql`
 
     input PedidoInput{
         pedido: [PedidoProductoInput]
-        total:Float!
-        cliente: ID!
+        total:Float
+        cliente: ID
         estado: EstadoPedido
        
     }
@@ -112,6 +112,12 @@ const typeDefs = gql`
         obtenerClientes: [Cliente]
         obtenerClientesVendedor: [Cliente]
         actualizarCliente(id: ID!, ClienteInput): Cliente
+
+        # Pedidos
+        obtenerPedidos: [Pedido]
+        obtenerPedidosVendedor: [Pedido]
+        obtenerPedido(id: ID!): Pedido
+
     }
 
     ######### MUTATION    
@@ -131,6 +137,7 @@ const typeDefs = gql`
 
         # Pedidos
         nuevoPedido(input:PedidoInput): Pedido
+        actualizarPedido(id:ID! input:PedidoInput): Pedido
     }
 `;
 
