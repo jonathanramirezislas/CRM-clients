@@ -384,3 +384,14 @@ query obtenerPedidosEstado($estado: String!){
 {
     "authorization":"fjksdjkdkftoken...."
 }
+
+//Mejores cientes
+query mejoresClientes{
+    mejoresClientes{
+        cliente{
+            nombre
+            empresa
+        }
+        total
+    }
+}
