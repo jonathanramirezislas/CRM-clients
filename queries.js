@@ -395,3 +395,14 @@ query mejoresClientes{
         total
     }
 }
+
+//Mejores cientes
+query mejoresVendedores{
+    mejoresVendedores{
+        vendedor{
+            nombre
+            empresa
+        }
+        total
+    }
+}

@@ -12,6 +12,11 @@ const typeDefs = gql`
         creado: String
     }
 
+    type TopVendedor {
+        total: Float
+        vendedor: [Usuario]
+    }
+
     type Cliente {
         id: ID
         nombre: String
@@ -126,6 +131,7 @@ const typeDefs = gql`
 
         # Busquedas Avanzadas
         mejoresClientes: [TopCliente]
+        mejoresVendedores: [TopVendedor]
     }
 
     ######### MUTATION    
