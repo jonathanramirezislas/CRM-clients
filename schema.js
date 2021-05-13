@@ -115,13 +115,13 @@ const typeDefs = gql`
         obtenerUsuario(token: String!) : Usuario
         
         # Productos
-        obtenerProductos(): [Producto]
+        obtenerProductos: [Producto]
+        obtenerProducto(id: ID!) : Producto
 
         #clientes
         obtenerCliente(id: ID!): Cliente
         obtenerClientes: [Cliente]
         obtenerClientesVendedor: [Cliente]
-        actualizarCliente(id: ID!, ClienteInput): Cliente
 
         # Pedidos
         obtenerPedidos: [Pedido]
@@ -142,17 +142,18 @@ const typeDefs = gql`
         autenticarUsuario(input: AutenticarInput!): Token
         
         # Productos
-        nuevoProducto(input: ProductoInput)
+        nuevoProducto(input: ProductoInput) : Producto
         actualizarProducto(id:ID!, input: ProductoInput!) : Producto
         eliminarProducto(id: ID!): String 
 
         #Clientes
         nuevoCliente(input: ClienteInput!): Cliente
+        actualizarCliente(id: ID!,input: ClienteInput): Cliente
         eliminarCliente(id: ID!): String
 
         # Pedidos
         nuevoPedido(input:PedidoInput): Pedido
-        actualizarPedido(id:ID! input:PedidoInput): Pedido
+        actualizarPedido(id:ID!, input:PedidoInput): Pedido
         eliminarPedido(id: ID!): String
 
     }

@@ -247,7 +247,7 @@ const resolvers = {
                 const producto = new Producto(input);
                 const resultado= await producto.save();
 
-                const resultado;
+                return resultado;
             } catch (error) {
                 console.log(error)
             }
